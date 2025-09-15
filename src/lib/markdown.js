@@ -2,7 +2,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 
-const worksDirectory = "${process.cwd()}/content/works";
+const worksDirectory = path.join(process.cwd(), "src", "content", "works");
 
 export function getAllWorkSlugs() {}
 
