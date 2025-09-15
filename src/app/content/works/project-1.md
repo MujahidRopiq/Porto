@@ -1,12 +1,15 @@
 ---
-title: "Enclave Inventory"
-date: "2023-12-10"
-description: "Ease your business management"
-technologies: ["Laravel", "MySQL", "Figma", "Bootstrap"]
+title: "E-Commerce Website"
+date: "2023-01-15"
+description: "A full-featured online store with shopping cart and payment processing."
+category: "Web Development"
+technologies: ["Next.js", "Stripe", "MongoDB"]
 demoUrl: "https://demo.example.com"
 codeUrl: "https://github.com/yourusername/ecommerce"
 featured: true
 coverImage: "/images/ecommerce-cover.jpg"
+client: "Client Name"
+projectDate: "January 2023"
 ---
 
 ## Project Overview

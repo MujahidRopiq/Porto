@@ -24,4 +24,19 @@ export async function getWorkData(slug) {
   };
 }
 
-export async function getAllWorkData() {}
+// src/lib/markdown.ts
+export async function getAllWorksData() {
+  // This should return an array of work objects
+  const works = [
+    {
+      slug: "project-1",
+      title: "E-Commerce Website",
+      description: "A full-featured online store",
+      coverImage: "/images/project-1.jpg",
+      category: "Web Development",
+      featured: true,
+    },
+    // ... more works
+  ];
+  return works;
+}

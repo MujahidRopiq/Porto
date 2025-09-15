@@ -1,57 +1,47 @@
-// src/components/WorkItem.tsx
-import Link from "next/link";
-import Image from "next/image";
+// src/app/page.tsx
+import { getAllWorksData } from "@/lib/markdown";
+import WorkItem from "@/components/WorkItem";
 
-interface WorkItemProps {
-  title: string;
-  description: string;
-  slug: string;
-  coverImage: string;
-  category?: string;
-  featured?: boolean;
-}
+export default async function Home() {
+  const allWorksData = await getAllWorksData();
 
-export default function WorkItem({
-  title,
-  description,
-  slug,
-  coverImage,
-  category,
-  featured,
-}: WorkItemProps) {
   return (
-    <Link href={`/works/${slug}`} className="group block">
-      <div className="relative overflow-hidden rounded-lg bg-gray-100 transition-all duration-300 group-hover:shadow-xl">
-        {/* Project Image */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={coverImage}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="py-20 px-6 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Work</h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Explore our portfolio of innovative projects and creative solutions
+        </p>
+      </section>
 
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 transition-all duration-300 group-hover:bg-opacity-70 flex items-end">
-            <div className="p-6 text-white opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-              <h3 className="text-xl font-semibold mb-2">{title}</h3>
-              <p className="text-gray-200 text-sm mb-3">{description}</p>
-              {category && (
-                <span className="inline-block px-3 py-1 bg-white bg-opacity-20 rounded-full text-xs backdrop-blur-sm">
-                  {category}
-                </span>
-              )}
-            </div>
+      {/* Work Grid Section */}
+      <section className="px-6 pb-20">
+        {/* Optional: Category Filter (you can implement this later) */}
+        {/* <div className="flex justify-center mb-12">
+          <div className="flex space-x-4">
+            <button className="px-4 py-2 rounded-full bg-gray-900 text-white">All</button>
+            <button className="px-4 py-2 rounded-full border">Web</button>
+            <button className="px-4 py-2 rounded-full border">Mobile</button>
+            <button className="px-4 py-2 rounded-full border">Branding</button>
           </div>
+        </div> */}
+
+        {/* Masonry Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {allWorksData.map((work) => (
+            <WorkItem
+              key={work.slug}
+              title={work.title}
+              description={work.description}
+              slug={work.slug}
+              coverImage={work.coverImage}
+              category={work.category}
+              featured={work.featured}
+            />
+          ))}
         </div>
-
-        {/* Badge for featured projects */}
-        {featured && (
-          <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-medium text-gray-900 z-10">
-            Featured
-          </div>
-        )}
-      </div>
-    </Link>
+      </section>
+    </div>
   );
 }
