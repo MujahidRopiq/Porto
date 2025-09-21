@@ -28,11 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
-          <nav className="mx-auto max-w-7xl px-6 py-4">
-            <div className="flex items-center justify-between">
-              <HomeLogo />
-            </div>
+        <header className="px-6 py-4 bg-white border-b">
+          <nav className="flex items-center">
+            <HomeLogo />
+            {/* Rest of your navigation */}
           </nav>
         </header>
         <main className="pt-20">{children}</main>
