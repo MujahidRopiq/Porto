@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import HomeLogo from "@/components/HomeLogo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 border-b">
+          <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <HomeLogo />
+          </nav>
+        </header>
+        <main className="pt-20">{children}</main>
       </body>
     </html>
   );
