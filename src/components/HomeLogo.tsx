@@ -5,15 +5,19 @@ export default function HomeLogo() {
   return (
     <Link
       href="/"
-      className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-lg px-4 transition-all duration-300 hover:bg-slate-50"
+      className="group relative inline-block font-mono text-[17px] tracking-tight text-gray-900 no-underline transition-colors hover:text-gray-700"
     >
-      <span className="text-xl font-bold text-gray-900 transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-2">
-        MR
-      </span>
+      <div className="relative inline-block">
+        {/* MR - disappears on hover */}
+        <span className="inline-block transition-opacity duration-200 group-hover:opacity-0">
+          MR
+        </span>
 
-      <span className="absolute text-sm font-semibold text-blue-600 opacity-0 scale-75 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0">
-        MUJAHID ROFIQ
-      </span>
+        {/* Full name - appears on hover */}
+        <span className="absolute left-0 top-0 inline-block w-full text-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          MUJAHID ROFIQ
+        </span>
+      </div>
     </Link>
   );
 }
