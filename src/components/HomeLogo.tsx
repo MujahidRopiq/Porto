@@ -1,44 +1,56 @@
-// src/components/HomeLogo.tsx
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function HomeLogo() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className="relative inline-flex items-baseline cursor-pointer font-bold text-2xl group"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* MR Container */}
-      <span className="inline-flex items-baseline overflow-hidden">
-        {/* M - stays fixed */}
-        <span className="transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)]">
-          M
-        </span>
-
-        {/* R - moves right with smooth easing */}
-        <span className="transition-transform duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] transform group-hover:translate-x-2">
-          R
-        </span>
-      </span>
-
-      {/* Hidden text that slides in */}
-      <span className="absolute left-full ml-1 whitespace-nowrap">
-        <span className="inline-flex items-baseline gap-1">
-          <span className="font-light text-gray-600 transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0">
+    <Link href={"/"}>
+      <div
+        className="inline-flex items-baseline cursor-pointer font-bold text-2xl group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* seperate the M and UJAHID bcs transition */}
+        <div className="relative">
+          <span>M</span>
+          <span
+            className={
+              "absolute left-full top-0 transition-all duration-400 ease-out " +
+              (isHovered ? "opacity-100 delay-100" : "opacity-0")
+            }
+          >
             UJAHID
           </span>
-          <span className="text-gray-400 transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0">
-            •
-          </span>
-          <span className="font-light text-gray-600 transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0">
-            OFIQ
-          </span>
-        </span>
-      </span>
-    </div>
+        </div>
+
+        {/* this for spacing between two words */}
+        <span className="mx-[0.9px]"></span>
+
+        {/* seperate the R and OFIQ bcs transition */}
+        <div className="relative">
+          <div
+            className={
+              "inline-flex items-baseline transition-transform duration-400 ease-out " +
+              (isHovered
+                ? "translate-x-24 hoverIn-bounce"
+                : "translate-x-0 delay-150 hoverOut-bounce")
+            }
+          >
+            <span>R</span>
+            <span
+              className={
+                "transition-all duration-400 ease-out " +
+                (isHovered ? "opacity-100 delay-100" : "opacity-0")
+              }
+            >
+              OFIQ
+            </span>
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
