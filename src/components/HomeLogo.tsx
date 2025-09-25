@@ -9,7 +9,7 @@ export default function HomeLogo() {
   return (
     <Link href={"/"}>
       <div
-        className="inline-flex items-baseline cursor-pointer font-bold text-2xl group"
+        className="inline-flex items-baseline cursor-pointer font-bold text-2xl text-black group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

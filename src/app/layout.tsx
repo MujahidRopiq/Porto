@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="px-6 py-4 bg-white border-b">
+        <header className="px-6 py-4 bg-white">
           <nav className="flex items-center justify-between">
             <HomeLogo />
             {/* Rest of your navigation */}
